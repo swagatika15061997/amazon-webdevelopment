@@ -8,6 +8,9 @@ header{
   border: 1px dashed green;
 
 }
+.a_header_top > button:hover{
+  border: 1px solid #fff;
+}
 .a_header_bottom{
   height: 39px;
   border: 1px dashed purple;
