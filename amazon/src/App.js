@@ -5,7 +5,7 @@ function App() {
   return (
     <div>
       <header>
-        <div className="a_header_top p-1">
+        <div className="a_header_top p-1" data-spy="affix" data-offset-top="197">
           <button className="me-1 btn h-100" style={{'width':'10%'}}>
             <img className="img-fluid" src="./logo1.jpg" alt="" />
           </button>
