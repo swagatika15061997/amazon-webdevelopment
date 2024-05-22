@@ -1,6 +1,6 @@
 import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationDot, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot, faBars, faUser, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import React, { Component } from 'react'
 
 export default class App extends Component {
@@ -26,10 +26,12 @@ export default class App extends Component {
       this.setState({ x: '' })
     }
   }
-  handleModal = () =>
-    {
-      this.setState({y:'header-modal l433'})
-    }
+  handleModal = () => {
+    this.setState({ y: 'header-modal l433' })
+  }
+  closeModal = () => {
+    this.setState({ y: 'header-modal l934' })
+  }
   componentDidMount() {
     //this method is called when the page/component is rendered
     window.addEventListener('scroll', this.handleScroll)
@@ -38,21 +40,63 @@ export default class App extends Component {
     return (
       <div>
         <div className="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div className={'modal-dialog modal-dialog-scrollable ' +this.state.y}>
+          <div className={'h-100 modal-dialog modal-dialog-scrollable ' + this.state.y}>
             <div className="modal-content">
-              <div className="modal-header">
-                <h1 className="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div className="modal-header" style={{ 'background': '#232f3e', 'color': '#fff' }}>
+                <h1 className="modal-title fs-5" id="staticBackdropLabel"><FontAwesomeIcon icon={faUser} /> Hello, sp</h1>
+                <button onClick={this.closeModal} type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
-                <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
-                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                <p>This content should appear at the bottom after you scroll.</p>
+              <div className="modal-body p-0">
+                <h5 className="fw-bolder" style={{'padding-left':'30px'}}>Trending</h5>
+                <ul className="nav flex-column mhul">
+                  <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#">Active</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Link</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Link</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link disabled" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+                <h5 className="fw-bolder" style={{'padding-left':'30px'}}>Digital Content & Devices</h5>
+                <ul className="nav flex-column mhul">
+                  <li className="nav-item">
+                    <a className="nav-link" aria-current="page" href="#">Echo & Alexa <FontAwesomeIcon className="float-end" icon={faChevronRight}/></a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Fire TV <FontAwesomeIcon className="float-end" icon={faChevronRight}/></a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Kindle E-Readers & eBooks <FontAwesomeIcon className="float-end" icon={faChevronRight}/></a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Audible Audiobooks <FontAwesomeIcon className="float-end" icon={faChevronRight}/></a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Amazon Prime Video <FontAwesomeIcon className="float-end" icon={faChevronRight}/></a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Amazon Prime Music <FontAwesomeIcon className="float-end" icon={faChevronRight}/></a>
+                  </li>
+                </ul>
+                <h5 className="fw-bolder" style={{'padding-left':'30px'}}>Help Setting</h5>
+                <ul className="nav flex-column mhul">
+                  <li className="nav-item">
+                    <a className="nav-link" aria-current="page" href="#">Your Account</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Customer Services</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Sign Out</a>
+                  </li>
+                </ul>
               </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Understood</button>
-              </div>
+
             </div>
           </div>
         </div>

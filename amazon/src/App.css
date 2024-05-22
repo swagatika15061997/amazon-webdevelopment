@@ -9,6 +9,15 @@ header{
   top: -30px !important;
   border-radius: 0px !important;
 }
+.mhul li a{
+  background: #fff;
+  color: #000;
+  padding-left: 30px;
+}
+.mhul li a:hover{
+  background: rgb(174, 173, 173);
+  color: #000;
+}
 .l934{
  left: -934px !important;
 }
