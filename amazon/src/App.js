@@ -6,36 +6,58 @@ import React, { Component } from 'react'
 export default class App extends Component {
   //1. properties
   state = {
-    'x' : ''
+    'x': '',
+    'y': 'header-modal l934',
   }
   //2. constructor
-  constructor(){
-    super()
+  constructor(props) {
+    super(props)
   }
   //3. Method
   //alway remember to create only fat arrow function
-  handleScroll = ()=>{
-    console.log('page loaded'+window.scrollY);
-    if(window.scrollY >= 60)
-      {
-        this.setState({x:'position-fixed start-0 top-0'})
-          //we will add 'position-fixed start-0 top-0'
-      }
-      else
-      {
-        //we will add 'position-fixed start-0 top-0'
-        this.setState({x:''})
-      }
+  handleScroll = () => {
+    console.log('page loaded' + window.scrollY);
+    if (window.scrollY >= 60) {
+      this.setState({ x: 'position-fixed start-0 top-0' })
+      //we will add 'position-fixed start-0 top-0'
+    }
+    else {
+      //we will add 'position-fixed start-0 top-0'
+      this.setState({ x: '' })
+    }
   }
-  componentDidMount(){
+  handleModal = () =>
+    {
+      this.setState({y:'header-modal l433'})
+    }
+  componentDidMount() {
     //this method is called when the page/component is rendered
-    window.addEventListener('scroll',this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll)
   }
   render() {
     return (
       <div>
+        <div className="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div className={'modal-dialog modal-dialog-scrollable ' +this.state.y}>
+            <div className="modal-content">
+              <div className="modal-header">
+                <h1 className="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <p>This content should appear at the bottom after you scroll.</p>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-primary">Understood</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <header>
-          <div className={'a_header_top p-1 w-100 '+this.state.x}>
+          <div className={'a_header_top p-1 w-100 ' + this.state.x}>
             <button className="me-1 btn h-100" style={{ 'width': '10%' }}>
               <img className="img-fluid" src="./logo1.jpg" alt="" style={{ 'height': '45px' }} />
             </button>
@@ -52,9 +74,13 @@ export default class App extends Component {
           </div>
           <div className="a_header_bottom">
             <ul className="nav float-start">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#"><FontAwesomeIcon className="fs-5" icon={faBars} />All</a>
-              </li>
+              {/* <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="#"><FontAwesomeIcon className="fs-5" icon={faBars} />
+                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">All</button>
+                </a>
+              </li> */}
+              <button onClick={this.handleModal} type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">All</button>
+
               <li className="nav-item">
                 <a className="nav-link" aria-current="page" href="#">Best Seller</a>
               </li>
